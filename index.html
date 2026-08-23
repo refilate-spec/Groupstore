@@ -325,7 +325,7 @@
                 </div>
 
                 <!-- Horizontal Scroll Track -->
-                <div id="horizontal-slider-track" class="w-full flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pt-4 pd-2 px-1">
+                <div id="horizontal-slider-track" class="w-full flex gap-4 overflow-x-auto overflow-y-visible no-scrollbar scroll-smooth pt-4 pb-2 px-2">
                     <!-- Cards injected dynamically via JS -->
                 </div>
             </section>
@@ -1004,7 +1004,8 @@
 
             if (style === 'horizontal') {
     return `
-        <div class="bg-surface rounded-2xl border border-border p-4 md:p-5 flex flex-col sm:flex-row gap-4 h-full">
+        <div class="relative bg-surface rounded-2xl border border-border p-4 md:p-5 flex flex-col sm:flex-row gap-4 h-full overflow-visible">
+            ${cornerBadge}
             <div class="shrink-0 flex sm:flex-col items-center sm:items-start justify-between gap-3 w-full sm:w-16">
                 <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl css-avatar shadow-sm border border-border shrink-0">
                     <span class="text-lg sm:text-xl font-bold text-text-muted">${UTILS.generateInitials(group.name)}</span>
@@ -1012,13 +1013,9 @@
                 <div class="flex items-center gap-1.5 text-[10px] font-semibold ${platformColorClass} px-2 py-1 rounded-md sm:w-full sm:justify-center"><i class="fa-brands ${platformIcon}"></i></div>
             </div>
             <div class="flex flex-col flex-1 min-w-0">
-                <!-- Yahan upar hi badge ko title ke sath adjust kar diya hai -->
                 <div class="flex items-start justify-between gap-2">
                     <h3 class="font-bold text-base md:text-lg text-text leading-tight flex items-center gap-1.5 truncate">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
-                    <div class="flex items-center gap-2">
-                        ${cornerBadge}
-                        ${innerBadge}
-                    </div>
+                    ${innerBadge}
                 </div>
                 <p class="text-sm text-text-secondary line-clamp-2 mt-1">${UTILS.escapeHTML(group.description)}</p>
                 <div class="flex flex-wrap gap-1.5 mt-3">${tagsHTML}</div>
@@ -1030,6 +1027,7 @@
         </div>
     `;
 }
+
        
                               
 
