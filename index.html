@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Groups Store — Premium Community Discovery</title>
+    <meta name="description" content="Discover premium WhatsApp, Facebook, and Telegram groups. AI-powered community matchmaking and directory.">
+    
+    <!-- SEO & Open Graph -->
+    <meta property="og:title" content="Groups Store">
+    <meta property="og:description" content="Find the best digital communities across platforms.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
+    <!-- Font Awesome (Required CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (Required CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration (Connecting to CSS Variables) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bg: 'var(--bg)',
+                        surface: 'var(--surface)',
+                        'surface-2': 'var(--surface-2)',
+                        'surface-3': 'var(--surface-3)',
+                        border: 'var(--border)',
+                        'border-strong': 'var(--border-strong)',
+                        text: 'var(--text)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'text-muted': 'var(--text-muted)',
+                        primary: 'var(--primary)',
+                        'primary-hover': 'var(--primary-hover)',
+                        'primary-soft': 'var(--primary-soft)',
+                        success: 'var(--success)',
+                        'success-soft': 'var(--success-soft)',
+                        warning: 'var(--warning)',
+                        'warning-soft': 'var(--warning-soft)',
+                        danger: 'var(--danger)',
+                        'danger-soft': 'var(--danger-soft)',
+                        ai: 'var(--ai)',
+                        'ai-soft': 'var(--ai-soft)',
+                        premium: 'var(--premium)',
+                        'premium-soft': 'var(--premium-soft)',
+                        
+                        // Platform subtle colors
+                        'brand-wa': 'var(--brand-wa)',
+                        'brand-wa-soft': 'var(--brand-wa-soft)',
+                        'brand-fb': 'var(--brand-fb)',
+                        'brand-fb-soft': 'var(--brand-fb-soft)',
+                        'brand-tg': 'var(--brand-tg)',
+                        'brand-tg-soft': 'var(--brand-tg-soft)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                        'slide-up': 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '10%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS (Centralized Color System & Rules) -->
+    <style>
+        /* Light Theme (Default) */
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-2: #f1f5f9;
+            --surface-3: #e2e8f0;
+            --border: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            
+            --primary: #0f172a;
+            --primary-hover: #1e293b;
+            --primary-soft: #f1f5f9;
+            
+            --success: #16a34a;
+            --success-soft: #f0fdf4;
+            --warning: #d97706;
+            --warning-soft: #fffbeb;
+            --danger: #dc2626;
+            --danger-soft: #fef2f2;
+            
+            --ai: #7c3aed;
+            --ai-soft: #f5f3ff;
+            --premium: #b45309;
+            --premium-soft: #fffbeb;
+
+            --brand-wa: #16a34a;
+            --brand-wa-soft: #dcfce7;
+            --brand-fb: #2563eb;
+            --brand-fb-soft: #dbeafe;
+            --brand-tg: #0284c7;
+            --brand-tg-soft: #e0f2fe;
+
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
+        }
+
+        /* Dark Theme */
+        html.dark {
+            --bg: #020617;
+            --surface: #0f172a;
+            --surface-2: #1e293b;
+            --surface-3: #334155;
+            --border: #1e293b;
+            --border-strong: #334155;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            
+            --primary: #ffffff;
+            --primary-hover: #f1f5f9;
+            --primary-soft: #1e293b;
+            
+            --success: #22c55e;
+            --success-soft: rgba(34, 197, 94, 0.1);
+            --warning: #f59e0b;
+            --warning-soft: rgba(245, 158, 11, 0.1);
+            --danger: #ef4444;
+            --danger-soft: rgba(239, 68, 68, 0.1);
+            
+            --ai: #a78bfa;
+            --ai-soft: rgba(124, 58, 237, 0.1);
+            --premium: #fcd34d;
+            --premium-soft: rgba(245, 158, 11, 0.1);
+
+            --brand-wa: #22c55e;
+            --brand-wa-soft: rgba(34, 197, 94, 0.1);
+            --brand-fb: #3b82f6;
+            --brand-fb-soft: rgba(59, 130, 246, 0.1);
+            --brand-tg: #38bdf8;
+            --brand-tg-soft: rgba(56, 189, 248, 0.1);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            padding-top: var(--safe-top);
+            padding-bottom: var(--safe-bottom);
+            padding-left: var(--safe-left);
+            padding-right: var(--safe-right);
+        }
+
+        .text-balance { text-wrap: balance; }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .z-base { z-index: 1; }
+        .z-header { z-index: 40; }
+        .z-bottom-nav { z-index: 45; }
+        .z-dropdown { z-index: 50; }
+        .z-overlay { z-index: 90; }
+        .z-modal { z-index: 100; }
+        .z-toast { z-index: 150; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* Hide scrollbars for smooth sliders while maintaining scroll */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        .main-content { padding-bottom: 80px; }
+        @media (min-width: 768px) { .main-content { padding-bottom: 0; } }
+        
+        .modal-content { max-height: min(90vh, 90dvh); width: calc(100% - 24px); }
+        .card-grid { transition: all 0.3s ease; }
+
+        .css-avatar {
+            background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-header bg-surface/80 backdrop-blur-lg border-b border-border shadow-sm">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3 shrink-0 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-8 h-8 rounded-lg bg-primary text-bg flex items-center justify-center font-bold text-lg">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight hidden sm:block">Groups Store</span>
+            </div>
+
+            <div class="hidden md:flex flex-1 items-center justify-between pl-8">
+                <nav class="flex gap-6 text-sm font-medium text-text-secondary">
+                    <a href="#" class="hover:text-primary transition-colors">Discover</a>
+                    <a href="#featured-slider-section" class="hover:text-primary transition-colors">Trending</a>
+                    <a href="#directory-container" class="hover:text-primary transition-colors">Directory</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <div class="relative group w-64 lg:w-80">
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"></i>
+                        <input type="text" id="desktop-search" placeholder="Search communities..." class="w-full bg-surface-2 border border-transparent focus:border-border-strong text-sm rounded-full pl-10 pr-4 py-2 outline-none transition-all placeholder:text-text-muted focus:bg-surface">
+                    </div>
+                    
+                    <button id="theme-toggle" class="w-10 h-10 rounded-full bg-surface-2 text-text hover:bg-surface-3 transition-colors flex items-center justify-center" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex md:hidden items-center gap-2">
+                <button id="mobile-search-btn" class="w-10 h-10 rounded-full text-text hover:bg-surface-2 transition-colors flex items-center justify-center" aria-label="Search">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+                <button id="mobile-theme-toggle" class="w-10 h-10 rounded-full text-text hover:bg-surface-2 transition-colors flex items-center justify-center" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-search-container" class="hidden border-t border-border px-4 py-3 bg-surface">
+            <div class="relative">
+                <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"></i>
+                <input type="text" id="mobile-search" placeholder="Search communities..." class="w-full bg-surface-2 border border-border text-sm rounded-xl pl-10 pr-10 py-3 outline-none focus:border-primary transition-colors">
+                <button id="clear-mobile-search" class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hidden">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 main-content flex flex-col items-center w-full">
+        <div class="w-full max-w-[1600px] px-4 md:px-6 lg:px-8 py-6 md:py-10 flex flex-col gap-8 md:gap-12">
+            
+            <!-- Hero & AI Banner Section -->
+            <section class="flex flex-col gap-6 md:gap-8 items-center text-center animate-fade-in max-w-3xl mx-auto mt-4 md:mt-8">
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-balance leading-tight">
+                    Discover Great Communities.
+                </h1>
+                <p class="text-text-secondary text-base md:text-lg max-w-2xl text-balance">
+                    Find the most useful, active, and high-quality groups across WhatsApp, Facebook, and Telegram.
+                </p>
+
+                <!-- AI Community Matchmaker Banner -->
+                <div class="w-full max-w-2xl bg-ai-soft border border-ai/20 rounded-2xl p-6 relative overflow-hidden shadow-sm group">
+                    <div class="absolute -right-10 -top-10 text-ai opacity-5 text-9xl">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-center gap-4 text-left justify-between">
+                        <div class="flex-1 flex flex-col gap-1">
+                            <div class="flex items-center gap-2 text-ai font-bold text-sm uppercase tracking-wider">
+                                <i class="fa-solid fa-sparkles"></i> AI Matchmaker
+                            </div>
+                            <h2 class="font-semibold text-lg text-text">Tell us what you're looking for.</h2>
+                            <p class="text-sm text-text-secondary line-clamp-2">"Find me beginner-friendly Python coding groups with remote job listings."</p>
+                        </div>
+                        <button onclick="AI_ENGINE.openModal()" class="shrink-0 bg-ai hover:bg-ai/90 text-white font-medium py-2.5 px-6 rounded-full transition-transform active:scale-95 shadow-sm flex items-center gap-2 whitespace-nowrap">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Ask AI
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HORIZONTAL SCROLLING CARD SLIDER SECTION -->
+            <section id="featured-slider-section" class="w-full flex flex-col gap-4">
+                <div class="flex items-center justify-between px-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-lg bg-premium-soft text-premium flex items-center justify-center text-sm font-bold">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <h2 class="text-lg md:text-xl font-bold tracking-tight">Trending & Featured Communities</h2>
+                    </div>
+                    <!-- Slider Navigation Arrows -->
+                    <div class="flex items-center gap-2">
+                        <button onclick="SLIDER_ENGINE.scroll('left')" class="w-9 h-9 rounded-full bg-surface-2 hover:bg-surface-3 border border-border flex items-center justify-center text-text transition-colors shadow-sm" aria-label="Scroll Left">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="SLIDER_ENGINE.scroll('right')" class="w-9 h-9 rounded-full bg-surface-2 hover:bg-surface-3 border border-border flex items-center justify-center text-text transition-colors shadow-sm" aria-label="Scroll Right">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Horizontal Scroll Track -->
+                <div id="horizontal-slider-track" class="w-full flex gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2 px-1">
+                    <!-- Cards injected dynamically via JS -->
+                </div>
+            </section>
+
+            <!-- Filters & Discovery Engine -->
+            <section class="w-full flex flex-col gap-4 mt-2">
+                
+                <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 bg-surface p-2 md:p-3 rounded-2xl border border-border shadow-sm">
+                    
+                    <div class="flex md:hidden items-center justify-between w-full px-2">
+                        <span class="text-sm font-medium text-text-muted" id="mobile-result-count">Loading...</span>
+                        <div class="flex gap-2">
+                            <button id="mobile-filter-btn" class="text-sm bg-surface-2 px-3 py-1.5 rounded-lg font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-sliders"></i> Filters
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="filter-panel" class="hidden md:flex flex-col md:flex-row w-full md:w-auto gap-3 flex-1 md:items-center p-4 md:p-0 border-t border-border md:border-0">
+                        <div class="flex items-center gap-2 text-text-muted text-sm font-medium pr-2 hidden md:flex">
+                            <i class="fa-solid fa-filter"></i>
+                        </div>
+
+                        <div class="relative">
+                            <select id="filter-platform" class="appearance-none bg-surface-2 border border-transparent hover:border-border text-sm font-medium rounded-xl pl-4 pr-10 py-2 outline-none cursor-pointer w-full md:w-auto focus:ring-2 focus:ring-primary/20">
+                                <option value="all">All Platforms</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="telegram">Telegram</option>
+                                <option value="facebook">Facebook</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-text-muted pointer-events-none"></i>
+                        </div>
+
+                        <div class="relative">
+                            <select id="filter-category" class="appearance-none bg-surface-2 border border-transparent hover:border-border text-sm font-medium rounded-xl pl-4 pr-10 py-2 outline-none cursor-pointer w-full md:w-auto focus:ring-2 focus:ring-primary/20">
+                                <option value="all">All Categories</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-text-muted pointer-events-none"></i>
+                        </div>
+
+                        <div class="relative">
+                            <select id="filter-tag" class="appearance-none bg-surface-2 border border-transparent hover:border-border text-sm font-medium rounded-xl pl-4 pr-10 py-2 outline-none cursor-pointer w-full md:w-auto focus:ring-2 focus:ring-primary/20">
+                                <option value="all">All Tags</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-text-muted pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:flex items-center gap-3 shrink-0 border-l border-border pl-4">
+                        <div class="relative">
+                            <select id="sort-select" class="appearance-none bg-transparent hover:bg-surface-2 text-sm font-medium rounded-xl pl-3 pr-8 py-2 outline-none cursor-pointer text-text-secondary transition-colors">
+                                <option value="featured">Featured First</option>
+                                <option value="newest">Newest</option>
+                                <option value="oldest">Oldest</option>
+                                <option value="az">Name A-Z</option>
+                                <option value="za">Name Z-A</option>
+                            </select>
+                            <i class="fa-solid fa-sort absolute right-2 top-1/2 -translate-y-1/2 text-xs text-text-muted pointer-events-none"></i>
+                        </div>
+                        
+                        <div class="flex items-center gap-1 bg-surface-2 p-1 rounded-lg">
+                            <button class="view-btn active w-8 h-8 rounded text-text-muted hover:text-text hover:bg-surface shadow-sm transition-all flex items-center justify-center" data-view="grid" aria-label="Grid View">
+                                <i class="fa-solid fa-grid-2"></i>
+                            </button>
+                            <button class="view-btn w-8 h-8 rounded text-text-muted hover:text-text hover:bg-surface transition-all flex items-center justify-center" data-view="list" aria-label="List View">
+                                <i class="fa-solid fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 px-2">
+                    <div id="active-filters-container" class="flex flex-wrap gap-2 empty:hidden"></div>
+                    <div class="text-sm font-medium text-text-muted hidden md:block" id="desktop-result-count"></div>
+                </div>
+            </section>
+
+            <div id="search-header" class="hidden flex items-center justify-between bg-surface-2 p-4 rounded-xl border border-border">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-search text-primary"></i>
+                    <span class="font-medium">Search results for "<span id="search-term-display" class="font-bold"></span>"</span>
+                </div>
+                <button onclick="FILTER_ENGINE.clearSearch()" class="text-sm text-text-secondary hover:text-text font-medium bg-surface px-3 py-1 rounded-md border border-border shadow-sm">Clear</button>
+            </div>
+
+            <!-- Main Directory Grid -->
+            <section id="directory-container" class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 card-grid pb-10"></section>
+
+            <div id="status-container" class="w-full py-12 flex flex-col items-center justify-center text-center gap-4"></div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border py-8 md:py-12 mt-auto">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-text-muted">
+            <div class="flex items-center gap-2 font-semibold text-text">
+                <div class="w-6 h-6 rounded bg-text text-bg flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                Groups Store
+            </div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#" class="hover:text-primary transition-colors">About</a>
+                <a href="#" class="hover:text-primary transition-colors">Privacy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                <a href="#" class="hover:text-primary transition-colors">Guidelines</a>
+            </div>
+            <div>&copy; 2026 Groups Store. Public Directory.</div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-lg border-t border-border z-bottom-nav pb-safe">
+        <div class="flex justify-around items-center h-16 px-2">
+            <button class="flex flex-col items-center justify-center w-16 gap-1 text-primary" onclick="window.scrollTo(0,0)">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-medium">Home</span>
+            </button>
+            <button class="flex flex-col items-center justify-center w-16 gap-1 text-text-muted hover:text-text transition-colors" onclick="document.getElementById('featured-slider-section').scrollIntoView({behavior:'smooth'})">
+                <i class="fa-solid fa-fire text-lg"></i>
+                <span class="text-[10px] font-medium">Trending</span>
+            </button>
+            <button class="relative -top-5 flex items-center justify-center w-14 h-14 rounded-full bg-primary text-bg shadow-lg shadow-primary/30" onclick="AI_ENGINE.openModal()">
+                <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+            </button>
+            <button class="flex flex-col items-center justify-center w-16 gap-1 text-text-muted hover:text-text transition-colors" onclick="document.getElementById('mobile-search-btn').click()">
+                <i class="fa-solid fa-search text-lg"></i>
+                <span class="text-[10px] font-medium">Search</span>
+            </button>
+            <button class="flex flex-col items-center justify-center w-16 gap-1 text-text-muted hover:text-text transition-colors" onclick="AI_ENGINE.openModal()">
+                <i class="fa-solid fa-robot text-lg"></i>
+                <span class="text-[10px] font-medium">Match AI</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- AI Matchmaker Modal -->
+    <div id="ai-modal" class="fixed inset-0 z-modal hidden items-center justify-center">
+        <div class="absolute inset-0 bg-text/20 dark:bg-bg/80 backdrop-blur-sm" onclick="AI_ENGINE.closeModal()"></div>
+        
+        <div class="relative bg-surface border border-border shadow-2xl rounded-2xl md:rounded-3xl w-full max-w-2xl modal-content flex flex-col overflow-hidden animate-slide-up transform-gpu">
+            
+            <div class="flex items-center justify-between p-4 md:p-6 border-b border-border bg-surface-2/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-ai text-white flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-text">AI Matchmaker</h3>
+                        <p class="text-xs text-text-secondary">Describe your ideal community</p>
+                    </div>
+                </div>
+                <button onclick="AI_ENGINE.closeModal()" class="w-8 h-8 rounded-full bg-surface hover:bg-border text-text-muted flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-4 md:p-6 overflow-y-auto flex-1 flex flex-col gap-6" id="ai-modal-body">
+                <div class="flex flex-col gap-3">
+                    <label for="ai-input" class="text-sm font-semibold text-text">What are you looking for?</label>
+                    <div class="relative">
+                        <textarea id="ai-input" rows="3" class="w-full bg-surface-2 border border-border rounded-xl p-4 text-sm outline-none focus:border-ai focus:ring-1 focus:ring-ai transition-all resize-none placeholder:text-text-muted" placeholder="E.g. Find me beginner-friendly Python coding groups with remote job listings..."></textarea>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <button class="text-xs bg-surface-2 border border-border px-3 py-1.5 rounded-full text-text-secondary hover:text-ai hover:border-ai transition-colors" onclick="document.getElementById('ai-input').value='I want active gaming communities';">🎮 Gaming groups</button>
+                        <button class="text-xs bg-surface-2 border border-border px-3 py-1.5 rounded-full text-text-secondary hover:text-ai hover:border-ai transition-colors" onclick="document.getElementById('ai-input').value='Find business and startup networking';">💼 Startup networking</button>
+                        <button class="text-xs bg-surface-2 border border-border px-3 py-1.5 rounded-full text-text-secondary hover:text-ai hover:border-ai transition-colors" onclick="document.getElementById('ai-input').value='AI and machine learning discussions';">🤖 AI discussions</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 md:p-6 border-t border-border bg-surface-2/50 flex justify-end gap-3" id="ai-modal-footer">
+                <button onclick="AI_ENGINE.closeModal()" class="px-5 py-2.5 rounded-xl font-medium text-text-secondary hover:bg-surface-3 transition-colors text-sm">Cancel</button>
+                <button onclick="AI_ENGINE.processMatch()" class="px-6 py-2.5 rounded-xl font-medium bg-ai hover:bg-ai/90 text-white shadow-sm flex items-center gap-2 transition-transform active:scale-95 text-sm">
+                    <i class="fa-solid fa-sparkles"></i> Find My Groups
+                </button>
+            </div>
+            
+            <div id="ai-loading" class="hidden absolute inset-0 bg-surface/90 backdrop-blur-sm flex flex-col items-center justify-center z-10">
+                <div class="w-16 h-16 relative flex items-center justify-center text-ai text-3xl animate-pulse-slow">
+                    <i class="fa-solid fa-robot absolute"></i>
+                    <i class="fa-solid fa-circle-notch fa-spin text-4xl opacity-20 absolute"></i>
+                </div>
+                <h4 class="font-bold text-lg mt-4 text-text">Analyzing Communities...</h4>
+                <p class="text-sm text-text-muted mt-1">Finding the perfect match for you</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-toast flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Script -->
+    <script>
+        window.GROUPS_STORE_CONFIG = {
+            siteName: "Groups Store",
+            defaultTheme: "system",
+            defaultView: "grid",
+            itemsPerPage: 12,
+            enableShare: true,
+            enableCopy: true,
+            maxVisibleTags: 3
+        };
+
+        window.GROUPS_STORE_AI = {
+            enabled: true,
+            apiKey: "",
+            model: "gemini-2.0-flash",
+            maxResults: 6
+        };
+
+        const ICON_ENGINE = {
+            CATEGORIES: {
+                technology: "fa-microchip", gaming: "fa-gamepad", jobs: "fa-briefcase",
+                education: "fa-graduation-cap", business: "fa-building", deals: "fa-tags",
+                entertainment: "fa-film", sports: "fa-futbol", finance: "fa-chart-line",
+                community: "fa-users", default: "fa-hashtag"
+            },
+            PLATFORMS: { whatsapp: "fa-whatsapp", facebook: "fa-facebook", telegram: "fa-telegram", default: "fa-link" },
+            BADGES: {
+                new: "fa-sparkles", featured: "fa-star", verified: "fa-circle-check",
+                hot: "fa-fire", trending: "fa-arrow-trend-up", premium: "fa-gem",
+                popular: "fa-heart", top: "fa-trophy", active: "fa-circle text-[8px]", live: "fa-broadcast-tower"
+            },
+            getCategoryIcon(cat) { return this.CATEGORIES[String(cat).toLowerCase()] || this.CATEGORIES.default; },
+            getPlatformIcon(p) { return this.PLATFORMS[String(p).toLowerCase()] || this.PLATFORMS.default; },
+            getBadgeIcon(b) { return this.BADGES[String(b).toLowerCase()] || "fa-certificate"; }
+        };
+
+        window.GROUPS_STORE_DATA = [
+            {
+                id: "group_001", name: "Advanced Python Devs", platform: "telegram", category: "Technology",
+                tags: ["Python", "AI", "Coding", "Backend"], url: "https://example.com/g/py-devs",
+                description: "A community for advanced Python developers discussing architecture, ML, and scalable backends.",
+                featured: true, verified: true, cornerBadge: "featured", innerBadge: "active", status: "active", cardStyle: "featured"
+            },
+            {
+                id: "group_002", name: "Global Remote Jobs", platform: "whatsapp", category: "Jobs",
+                tags: ["Remote", "Careers", "Tech Jobs", "Freelance"], url: "https://example.com/g/remote-jobs",
+                description: "Daily remote job postings across tech, design, and marketing. Verified companies only.",
+                featured: true, verified: true, cornerBadge: "hot", status: "active", cardStyle: "auto"
+            },
+            {
+                id: "group_003", name: "Startup Founders Circle", platform: "facebook", category: "Business",
+                tags: ["Startups", "Funding", "Networking"], url: "https://example.com/g/founders",
+                description: "Network with other founders, share resources, and connect with angel investors.",
+                featured: true, cornerBadge: "premium", innerBadge: "community", cardStyle: "media"
+            },
+            {
+                id: "group_004", name: "Valorant Scrims Asia", platform: "telegram", category: "Gaming",
+                tags: ["Valorant", "Esports", "Scrims"], url: "https://example.com/g/val-scrims",
+                description: "Find daily scrims for your Valorant team in the Asian region. All ranks welcome.",
+                featured: true, cornerBadge: "trending", innerBadge: "live", cardStyle: "compact"
+            },
+            {
+                id: "group_005", name: "UI/UX Design Masters", platform: "whatsapp", category: "Technology",
+                tags: ["Design", "Figma", "UI", "UX"], url: "https://example.com/g/ui-ux",
+                description: "Share feedback on designs, get Figma tips, and find design inspiration.",
+                featured: true, verified: true, cornerBadge: "top", cardStyle: "horizontal"
+            },
+            {
+                id: "group_006", name: "Crypto Trading Signals", platform: "telegram", category: "Finance",
+                tags: ["Crypto", "Bitcoin", "Trading"], url: "https://example.com/g/crypto",
+                description: "Daily market analysis and technical trading setups. Educational purposes only.",
+                cardStyle: "classic", innerBadge: "active", status: "active"
+            },
+            {
+                id: "group_007", name: "Machine Learning Papers", platform: "facebook", category: "Technology",
+                tags: ["AI", "Research", "Papers"], url: "https://example.com/g/ml-papers",
+                description: "Discussion group for the latest research papers in deep learning and AI.", cardStyle: "auto"
+            },
+            {
+                id: "group_008", name: "Amazon Deals & Glitches", platform: "whatsapp", category: "Deals",
+                tags: ["Shopping", "Coupons", "Discounts"], url: "https://example.com/g/deals",
+                description: "Instant alerts for price drops, coupon codes, and pricing errors on Amazon.", cornerBadge: "new", cardStyle: "compact"
+            },
+            {
+                id: "group_009", name: "React Native Developers", platform: "telegram", category: "Technology",
+                tags: ["React", "Mobile", "Coding"], url: "https://example.com/g/react-native",
+                description: "Mobile app development using React Native and Expo.", verified: true, innerBadge: "official", cardStyle: "auto"
+            },
+            {
+                id: "group_010", name: "Indie Game Devs", platform: "facebook", category: "Gaming",
+                tags: ["Unity", "Unreal", "GameDev"], url: "https://example.com/g/gamedev",
+                description: "Showcase your indie games, get feedback, and find collaborators.", cardStyle: "media"
+            },
+            {
+                id: "group_011", name: "English Learning Hub", platform: "whatsapp", category: "Education",
+                tags: ["English", "IELTS", "Speaking"], url: "https://example.com/g/english",
+                description: "Practice spoken English with native speakers and learners worldwide.", cornerBadge: "popular", cardStyle: "auto"
+            },
+            {
+                id: "group_012", name: "Local Foodies Network", platform: "facebook", category: "Community",
+                tags: ["Food", "Reviews", "Meetups"], url: "https://example.com/g/foodies",
+                description: "Share restaurant recommendations and organize local food tasting meetups.", cardStyle: "horizontal"
+            }
+        ];
+
+        const STATE = {
+            data: [],
+            filteredData: [],
+            categories: new Set(),
+            tags: new Set(),
+            currentPage: 1,
+            viewMode: window.GROUPS_STORE_CONFIG.defaultView,
+            filters: { search: '', platform: 'all', category: 'all', tag: 'all', sort: 'featured' },
+            theme: localStorage.getItem('groups_store_theme') || window.GROUPS_STORE_CONFIG.defaultTheme
+        };
+
+        const UTILS = {
+            escapeHTML(str) {
+                if (!str) return '';
+                const p = document.createElement('p');
+                p.textContent = str;
+                return p.innerHTML;
+            },
+            debounce(func, wait) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func(...args), wait);
+                };
+            },
+            getPlatformColorClass(platform) {
+                const p = platform.toLowerCase();
+                if (p === 'whatsapp') return 'text-brand-wa bg-brand-wa-soft border-brand-wa/20';
+                if (p === 'facebook') return 'text-brand-fb bg-brand-fb-soft border-brand-fb/20';
+                if (p === 'telegram') return 'text-brand-tg bg-brand-tg-soft border-brand-tg/20';
+                return 'text-text bg-surface-2 border-border';
+            },
+            getPlatformTextClass(platform) {
+                const p = platform.toLowerCase();
+                if (p === 'whatsapp') return 'text-brand-wa';
+                if (p === 'facebook') return 'text-brand-fb';
+                if (p === 'telegram') return 'text-brand-tg';
+                return 'text-text-secondary';
+            },
+            generateInitials(name) {
+                return name.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase();
+            },
+            toast(message, type = 'success') {
+                const container = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                const icon = type === 'success' ? 'fa-check-circle text-success' : 'fa-circle-exclamation text-danger';
+                toast.className = `bg-surface border border-border shadow-xl rounded-xl p-4 flex items-center gap-3 animate-slide-up transform-gpu pointer-events-auto`;
+                toast.innerHTML = `<i class="fa-solid ${icon} text-lg"></i><span class="text-sm font-medium text-text">${this.escapeHTML(message)}</span>`;
+                container.appendChild(toast);
+                setTimeout(() => {
+                    toast.classList.replace('animate-slide-up', 'opacity-0');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+        };
+
+        const DATA_ENGINE = {
+            init() {
+                STATE.data = window.GROUPS_STORE_DATA.map(group => {
+                    if (group.category) STATE.categories.add(group.category);
+                    if (group.tags) group.tags.forEach(t => STATE.tags.add(t));
+                    return {
+                        ...group,
+                        name: group.name || 'Unknown Group',
+                        platform: (group.platform || 'unknown').toLowerCase(),
+                        category: group.category || 'General',
+                        tags: Array.isArray(group.tags) ? group.tags : [],
+                        searchString: `${group.name} ${group.category} ${(group.tags||[]).join(' ')} ${group.description} ${group.platform}`.toLowerCase()
+                    };
+                });
+                this.populateDropdowns();
+                SLIDER_ENGINE.renderSlider();
+                FILTER_ENGINE.applyFilters();
+            },
+            populateDropdowns() {
+                const catSelect = document.getElementById('filter-category');
+                const tagSelect = document.getElementById('filter-tag');
+                Array.from(STATE.categories).sort().forEach(cat => catSelect.add(new Option(cat, cat)));
+                Array.from(STATE.tags).sort().forEach(tag => tagSelect.add(new Option(tag, tag)));
+            }
+        };
+
+        /**
+         * ============================================================
+         * HORIZONTAL SLIDER ENGINE
+         * ============================================================
+         */
+        const SLIDER_ENGINE = {
+            renderSlider() {
+                const track = document.getElementById('horizontal-slider-track');
+                track.innerHTML = '';
+                
+                // Filter featured or trending items for the slider
+                const featuredItems = STATE.data.filter(g => g.featured || g.cornerBadge).slice(0, 8);
+                
+                const fragment = document.createDocumentFragment();
+                featuredItems.forEach(group => {
+                    const card = document.createElement('div');
+                    card.className = 'w-[280px] md:w-[320px] shrink-0 bg-surface border border-border rounded-2xl p-4 flex flex-col justify-between hover:border-border-strong hover:shadow-md transition-all relative overflow-hidden group';
+                    
+                    const platformIcon = ICON_ENGINE.getPlatformIcon(group.platform);
+                    const platformColor = UTILS.getPlatformColorClass(group.platform);
+                    const catIcon = ICON_ENGINE.getCategoryIcon(group.category);
+                    const verifiedTick = group.verified ? `<i class="fa-solid fa-circle-check text-success text-xs" title="Verified"></i>` : '';
+                    
+                    card.innerHTML = `
+                        ${BADGE_ENGINE.renderCornerBadge(group.cornerBadge)}
+                        <div class="flex flex-col gap-3">
+                            <div class="flex items-center justify-between">
+                                <div class="w-10 h-10 rounded-xl css-avatar border border-border font-bold text-sm text-text-muted">
+                                    ${UTILS.generateInitials(group.name)}
+                                </div>
+                                <div class="flex items-center gap-1.5 text-xs font-semibold ${platformColor} px-2 py-1 rounded-lg">
+                                    <i class="fa-brands ${platformIcon}"></i> <span class="capitalize">${group.platform}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base text-text leading-tight flex items-center gap-1.5 truncate">
+                                    ${UTILS.escapeHTML(group.name)} ${verifiedTick}
+                                </h3>
+                                <p class="text-xs text-text-secondary mt-1 line-clamp-2">${UTILS.escapeHTML(group.description)}</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-border flex items-center justify-between">
+                            <span class="text-[11px] text-text-muted flex items-center gap-1"><i class="fa-solid ${catIcon}"></i> ${UTILS.escapeHTML(group.category)}</span>
+                            <button onclick="ACTION_ENGINE.join('${group.url}')" class="bg-primary hover:bg-primary-hover text-bg font-semibold py-1.5 px-4 rounded-xl text-xs transition-colors">Join</button>
+                        </div>
+                    `;
+                    fragment.appendChild(card);
+                });
+                
+                track.appendChild(fragment);
+            },
+            scroll(direction) {
+                const track = document.getElementById('horizontal-slider-track');
+                const scrollAmount = 320;
+                if (direction === 'left') {
+                    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }
+        };
+
+        const FILTER_ENGINE = {
+            init() {
+                const searchHandler = UTILS.debounce((e) => {
+                    STATE.filters.search = e.target.value.toLowerCase().trim();
+                    this.syncSearchInputs(e.target.id);
+                    this.applyFilters();
+                }, 300);
+
+                document.getElementById('desktop-search').addEventListener('input', searchHandler);
+                document.getElementById('mobile-search').addEventListener('input', searchHandler);
+                
+                ['platform', 'category', 'tag'].forEach(filter => {
+                    document.getElementById(`filter-${filter}`).addEventListener('change', (e) => {
+                        STATE.filters[filter] = e.target.value;
+                        this.applyFilters();
+                    });
+                });
+
+                document.getElementById('sort-select').addEventListener('change', (e) => {
+                    STATE.filters.sort = e.target.value;
+                    this.applyFilters();
+                });
+            },
+            syncSearchInputs(sourceId) {
+                const val = document.getElementById(sourceId).value;
+                if (sourceId === 'desktop-search') document.getElementById('mobile-search').value = val;
+                if (sourceId === 'mobile-search') document.getElementById('desktop-search').value = val;
+                document.getElementById('clear-mobile-search').classList.toggle('hidden', val.length === 0);
+            },
+            clearSearch() {
+                document.getElementById('desktop-search').value = '';
+                document.getElementById('mobile-search').value = '';
+                STATE.filters.search = '';
+                this.syncSearchInputs('desktop-search');
+                this.applyFilters();
+            },
+            applyFilters() {
+                STATE.currentPage = 1;
+                let results = [...STATE.data];
+                const f = STATE.filters;
+
+                if (f.search) results = results.filter(g => g.searchString.includes(f.search));
+                if (f.platform !== 'all') results = results.filter(g => g.platform === f.platform);
+                if (f.category !== 'all') results = results.filter(g => g.category === f.category);
+                if (f.tag !== 'all') results = results.filter(g => g.tags.includes(f.tag));
+
+                results.sort((a, b) => {
+                    if (f.sort === 'featured') {
+                        if (a.featured && !b.featured) return -1;
+                        if (!a.featured && b.featured) return 1;
+                        return 0;
+                    }
+                    if (f.sort === 'az') return a.name.localeCompare(b.name);
+                    if (f.sort === 'za') return b.name.localeCompare(a.name);
+                    if (f.sort === 'newest') return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+                    if (f.sort === 'oldest') return new Date(a.createdAt || 0) - new Date(b.createdAt || 0);
+                    return 0;
+                });
+
+                STATE.filteredData = results;
+                this.updateUI();
+                CARD_ENGINE.renderCards();
+            },
+            updateUI() {
+                const count = STATE.filteredData.length;
+                const countText = `Showing ${count} group${count !== 1 ? 's' : ''}`;
+                document.getElementById('desktop-result-count').textContent = countText;
+                document.getElementById('mobile-result-count').textContent = countText;
+                
+                const searchHeader = document.getElementById('search-header');
+                if (STATE.filters.search) {
+                    searchHeader.classList.remove('hidden');
+                    document.getElementById('search-term-display').textContent = UTILS.escapeHTML(STATE.filters.search);
+                } else {
+                    searchHeader.classList.add('hidden');
+                }
+                this.renderActiveFilterChips();
+            },
+            renderActiveFilterChips() {
+                const container = document.getElementById('active-filters-container');
+                container.innerHTML = '';
+                const f = STATE.filters;
+                const createChip = (label, key) => {
+                    const chip = document.createElement('div');
+                    chip.className = 'bg-primary-soft text-primary text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-2 border border-primary/10';
+                    chip.innerHTML = `${UTILS.escapeHTML(label)} <i class="fa-solid fa-xmark cursor-pointer" onclick="FILTER_ENGINE.removeFilter('${key}')"></i>`;
+                    return chip;
+                };
+                if (f.platform !== 'all') container.appendChild(createChip(`Platform: ${f.platform}`, 'platform'));
+                if (f.category !== 'all') container.appendChild(createChip(`Category: ${f.category}`, 'category'));
+                if (f.tag !== 'all') container.appendChild(createChip(`Tag: ${f.tag}`, 'tag'));
+            },
+            removeFilter(key) {
+                document.getElementById(`filter-${key}`).value = 'all';
+                STATE.filters[key] = 'all';
+                this.applyFilters();
+            }
+        };
+
+        const BADGE_ENGINE = {
+            renderCornerBadge(badgeType) {
+                if (!badgeType) return '';
+                const b = badgeType.toLowerCase();
+                let colorClass = "bg-surface-2 text-text-secondary border-border";
+                if (['featured', 'premium', 'top'].includes(b)) colorClass = "bg-premium text-white border-premium";
+                if (['new', 'hot', 'trending'].includes(b)) colorClass = "bg-danger text-white border-danger";
+                if (b === 'verified') colorClass = "bg-success text-white border-success";
+                const icon = ICON_ENGINE.getBadgeIcon(b);
+                return `<div class="absolute -top-3 -right-3 z-10 ${colorClass} text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-lg shadow-sm border flex items-center gap-1"><i class="fa-solid ${icon}"></i> ${UTILS.escapeHTML(b)}</div>`;
+            },
+            renderInnerBadge(badgeType) {
+                if (!badgeType) return '';
+                const icon = ICON_ENGINE.getBadgeIcon(badgeType);
+                return `<span class="inline-flex items-center gap-1 bg-surface-3/50 text-text text-[10px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wide"><i class="fa-solid ${icon}"></i> ${UTILS.escapeHTML(badgeType)}</span>`;
+            }
+        };
+
+        const CARD_ENGINE = {
+            renderCards() {
+                const container = document.getElementById('directory-container');
+                const statusContainer = document.getElementById('status-container');
+                container.innerHTML = '';
+                statusContainer.innerHTML = '';
+
+                if (STATE.viewMode === 'list') {
+                    container.className = 'w-full flex flex-col gap-4 pb-10';
+                } else {
+                    container.className = 'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 card-grid pb-10';
+                }
+
+                if (STATE.filteredData.length === 0) {
+                    statusContainer.innerHTML = `
+                        <div class="text-text-muted text-5xl mb-4 opacity-50"><i class="fa-solid fa-folder-open"></i></div>
+                        <h3 class="text-xl font-bold text-text">No Groups Found</h3>
+                        <p class="text-text-secondary max-w-md">We couldn't find any communities matching your criteria. Try adjusting your filters or search terms.</p>
+                        <button onclick="FILTER_ENGINE.clearSearch(); ['platform','category','tag'].forEach(k=>FILTER_ENGINE.removeFilter(k));" class="mt-4 px-6 py-2 bg-surface-2 hover:bg-surface-3 text-text rounded-full font-medium transition-colors border border-border">Clear All Filters</button>
+                    `;
+                    return;
+                }
+
+                const endIndex = STATE.currentPage * window.GROUPS_STORE_CONFIG.itemsPerPage;
+                const visibleData = STATE.filteredData.slice(0, endIndex);
+                const fragment = document.createDocumentFragment();
+                
+                visibleData.forEach(group => {
+                    const style = this.resolveCardStyle(group);
+                    const cardHTML = this.getCardTemplate(group, style);
+                    const wrapper = document.createElement('article');
+                    wrapper.className = 'group relative flex flex-col bg-surface border border-border rounded-2xl md:rounded-3xl hover:border-border-strong hover:shadow-md transition-all duration-300 overflow-visible';
+                    wrapper.innerHTML = cardHTML;
+                    fragment.appendChild(wrapper);
+                });
+
+                container.appendChild(fragment);
+
+                if (endIndex < STATE.filteredData.length) {
+                    const loadBtn = document.createElement('button');
+                    loadBtn.className = 'px-8 py-3 bg-surface-2 hover:bg-surface-3 border border-border text-text font-semibold rounded-xl transition-all active:scale-95';
+                    loadBtn.innerHTML = 'Load More Communities';
+                    loadBtn.onclick = () => { STATE.currentPage++; this.renderCards(); };
+                    statusContainer.appendChild(loadBtn);
+                }
+            },
+            resolveCardStyle(group) {
+                if (STATE.viewMode === 'list') return 'list';
+                if (group.cardStyle && group.cardStyle !== 'auto') return group.cardStyle;
+                if (group.featured) return 'featured';
+                if (group.platform === 'whatsapp' || group.tags.length > 3) return 'horizontal';
+                return 'classic';
+            },
+            getCardTemplate(group, style) {
+                const cornerBadge = BADGE_ENGINE.renderCornerBadge(group.cornerBadge);
+                const platformIcon = ICON_ENGINE.getPlatformIcon(group.platform);
+                const platformColorClass = UTILS.getPlatformColorClass(group.platform);
+                const platformTextClass = UTILS.getPlatformTextClass(group.platform);
+                const catIcon = ICON_ENGINE.getCategoryIcon(group.category);
+                const tagsHTML = group.tags.slice(0, window.GROUPS_STORE_CONFIG.maxVisibleTags).map(tag => 
+                    `<span class="text-[11px] font-medium text-text-secondary bg-surface-2 px-2 py-1 rounded-md">#${UTILS.escapeHTML(tag)}</span>`
+                ).join('');
+                const verifiedTick = group.verified ? `<i class="fa-solid fa-circle-check text-success text-sm" title="Verified"></i>` : '';
+                const innerBadge = BADGE_ENGINE.renderInnerBadge(group.innerBadge);
+
+                const actionsHTML = `
+                    <div class="mt-auto pt-4 flex items-center gap-2">
+                        <button onclick="ACTION_ENGINE.join('${group.url}')" class="flex-1 bg-primary hover:bg-primary-hover text-bg font-semibold py-2.5 px-4 rounded-xl transition-colors text-sm text-center">Join Group</button>
+                        <button onclick="ACTION_ENGINE.share('${group.id}')" class="w-10 h-10 shrink-0 bg-surface-2 hover:bg-surface-3 text-text-secondary rounded-xl flex items-center justify-center transition-colors" aria-label="Share"><i class="fa-solid fa-share-nodes"></i></button>
+                        <button onclick="ACTION_ENGINE.copy('${group.id}')" class="w-10 h-10 shrink-0 bg-surface-2 hover:bg-surface-3 text-text-secondary rounded-xl flex items-center justify-center transition-colors" aria-label="Copy Link"><i class="fa-solid fa-copy"></i></button>
+                    </div>
+                `;
+
+                if (style === 'media') {
+                    return `
+                        ${cornerBadge}
+                        <div class="h-32 w-full rounded-t-2xl md:rounded-t-3xl css-avatar relative overflow-hidden flex flex-col items-center justify-center border-b border-border">
+                            <i class="fa-solid ${catIcon} text-5xl text-primary/40 absolute -right-4 -bottom-4"></i>
+                            <div class="w-16 h-16 bg-surface rounded-full shadow-md flex items-center justify-center z-10 ${platformTextClass}">
+                                <i class="fa-brands ${platformIcon} text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-5 flex flex-col flex-1 gap-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-1.5 text-xs font-semibold ${platformColorClass} px-2 py-0.5 rounded-md"><i class="fa-brands ${platformIcon}"></i> <span class="capitalize">${group.platform}</span></div>
+                                ${innerBadge}
+                            </div>
+                            <h3 class="font-bold text-lg text-text leading-tight flex items-center gap-1.5 mt-1">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
+                            <p class="text-sm text-text-secondary line-clamp-2 mt-1">${UTILS.escapeHTML(group.description)}</p>
+                            ${actionsHTML}
+                        </div>
+                    `;
+                }
+
+                if (style === 'featured') {
+                    return `
+                        ${cornerBadge}
+                        <div class="p-5 flex flex-col flex-1 gap-3 relative z-10">
+                            <div class="flex items-start justify-between">
+                                <div class="w-12 h-12 rounded-xl css-avatar shadow-sm border border-border"><i class="fa-solid ${catIcon} text-xl text-primary"></i></div>
+                                <div class="flex items-center gap-1.5 text-xs font-semibold ${platformColorClass} px-2 py-1 rounded-lg"><i class="fa-brands ${platformIcon}"></i> <span class="capitalize">${group.platform}</span></div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-text leading-tight flex items-center gap-1.5">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
+                                <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                    <span class="text-xs font-medium text-text-muted flex items-center gap-1"><i class="fa-solid ${catIcon}"></i> ${UTILS.escapeHTML(group.category)}</span>
+                                    ${innerBadge}
+                                </div>
+                            </div>
+                            <p class="text-sm text-text-secondary line-clamp-2 mt-1">${UTILS.escapeHTML(group.description)}</p>
+                            <div class="flex flex-wrap gap-1.5 mt-1">${tagsHTML}</div>
+                            ${actionsHTML}
+                        </div>
+                    `;
+                }
+
+                if (style === 'horizontal') {
+                    return `
+                        ${cornerBadge}
+                        <div class="p-4 md:p-5 flex flex-col sm:flex-row gap-4 h-full relative z-10">
+                            <div class="shrink-0 flex sm:flex-col items-center sm:items-start justify-between gap-3 w-full sm:w-16">
+                                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl css-avatar shadow-sm border border-border shrink-0">
+                                    <span class="text-lg sm:text-xl font-bold text-text-muted">${UTILS.generateInitials(group.name)}</span>
+                                </div>
+                                <div class="flex items-center gap-1.5 text-[10px] font-semibold ${platformColorClass} px-2 py-1 rounded-md sm:w-full sm:justify-center"><i class="fa-brands ${platformIcon}"></i></div>
+                            </div>
+                            <div class="flex flex-col flex-1 min-w-0">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="font-bold text-base md:text-lg text-text leading-tight flex items-center gap-1.5 truncate">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
+                                    ${innerBadge}
+                                </div>
+                                <p class="text-sm text-text-secondary line-clamp-2 mt-1">${UTILS.escapeHTML(group.description)}</p>
+                                <div class="flex flex-wrap gap-1.5 mt-3">${tagsHTML}</div>
+                                <div class="mt-auto pt-4 flex items-center gap-2 sm:max-w-xs">
+                                    <button onclick="ACTION_ENGINE.join('${group.url}')" class="flex-1 bg-primary hover:bg-primary-hover text-bg font-semibold py-2 px-4 rounded-xl transition-colors text-sm text-center">Join</button>
+                                    <button onclick="ACTION_ENGINE.share('${group.id}')" class="w-9 h-9 shrink-0 bg-surface-2 hover:bg-surface-3 text-text-secondary rounded-xl flex items-center justify-center transition-colors"><i class="fa-solid fa-share-nodes"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (style === 'compact') {
+                    return `
+                        ${cornerBadge}
+                        <div class="p-4 flex flex-col flex-1 gap-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full css-avatar shadow-sm border border-border shrink-0"><i class="fa-brands ${platformIcon} ${platformTextClass}"></i></div>
+                                <div class="min-w-0 flex-1">
+                                    <h3 class="font-bold text-base text-text leading-tight flex items-center gap-1 truncate">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
+                                    <span class="text-xs font-medium text-text-muted flex items-center gap-1 mt-0.5"><i class="fa-solid ${catIcon}"></i> ${UTILS.escapeHTML(group.category)}</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto pt-3">
+                                <button onclick="ACTION_ENGINE.join('${group.url}')" class="w-full bg-surface-2 hover:bg-surface-3 text-text font-semibold py-2 px-4 border border-border rounded-xl transition-colors text-sm text-center">Join Community</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    ${cornerBadge}
+                    <div class="p-5 flex flex-col flex-1 gap-3 relative z-10">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl css-avatar shadow-sm border border-border shrink-0"><span class="text-xl font-bold text-text-muted">${UTILS.generateInitials(group.name)}</span></div>
+                            <div class="flex items-center gap-1.5 text-xs font-semibold ${platformColorClass} px-2 py-1 rounded-lg"><i class="fa-brands ${platformIcon}"></i> <span class="capitalize hidden sm:inline">${group.platform}</span></div>
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-bold text-lg text-text leading-tight flex items-center gap-1.5">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
+                            <span class="text-xs font-medium text-text-muted flex items-center gap-1 mt-1"><i class="fa-solid ${catIcon}"></i> ${UTILS.escapeHTML(group.category)}</span>
+                        </div>
+                        <p class="text-sm text-text-secondary line-clamp-2">${UTILS.escapeHTML(group.description)}</p>
+                        <div class="flex flex-wrap gap-1.5 mt-1">${tagsHTML}</div>
+                        ${actionsHTML}
+                    </div>
+                `;
+            }
+        };
+
+        const ACTION_ENGINE = {
+            getGroup(id) { return STATE.data.find(g => g.id === id); },
+            join(url) {
+                if (url && url.startsWith('http')) window.open(url, '_blank', 'noopener,noreferrer');
+                else UTILS.toast("Invalid group link", "error");
+            },
+            async share(id) {
+                const group = this.getGroup(id);
+                if (!group) return;
+                const shareData = { title: `Join ${group.name}`, text: `Check out this group`, url: window.location.origin + window.location.pathname + `?ref=${id}` };
+                if (navigator.share) {
+                    try { await navigator.share(shareData); } catch (err) { if (err.name !== 'AbortError') this.copy(id, true); }
+                } else { this.copy(id, true); }
+            },
+            copy(id, isFallback = false) {
+                const group = this.getGroup(id);
+                if (!group) return;
+                const link = window.location.origin + window.location.pathname + `?ref=${id}`;
+                navigator.clipboard.writeText(link).then(() => {
+                    UTILS.toast(isFallback ? "Link copied (Share unavailable)" : "Link copied to clipboard");
+                });
+            }
+        };
+
+        const AI_ENGINE = {
+            modal: document.getElementById('ai-modal'),
+            body: document.getElementById('ai-modal-body'),
+            loading: document.getElementById('ai-loading'),
+            input: document.getElementById('ai-input'),
+            openModal() {
+                this.modal.classList.remove('hidden');
+                this.modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => this.input.focus(), 100);
+            },
+            closeModal() {
+                this.modal.classList.add('hidden');
+                this.modal.classList.remove('flex');
+                document.body.style.overflow = '';
+                this.loading.classList.add('hidden');
+                this.body.classList.remove('hidden');
+                document.getElementById('ai-modal-footer').classList.remove('hidden');
+                const resultsBlock = document.getElementById('ai-results-block');
+                if (resultsBlock) resultsBlock.remove();
+            },
+            async processMatch() {
+                const query = this.input.value.trim();
+                if (!query) return;
+                this.body.classList.add('hidden');
+                document.getElementById('ai-modal-footer').classList.add('hidden');
+                this.loading.classList.remove('hidden');
+
+                await new Promise(r => setTimeout(r, 1200));
+
+                const tokens = query.toLowerCase().replace(/[^\w\s]/gi, '').split(' ').filter(t => t.length > 2);
+                const scoredGroups = STATE.data.map(group => {
+                    let score = 0;
+                    tokens.forEach(token => {
+                        if (group.tags.map(t=>t.toLowerCase()).includes(token)) score += 5;
+                        else if (group.category.toLowerCase().includes(token)) score += 4;
+                        else if (group.name.toLowerCase().includes(token)) score += 3;
+                        else if (group.searchString.includes(token)) score += 1;
+                    });
+                    return { id: group.id, score };
+                }).filter(g => g.score > 0).sort((a, b) => b.score - a.score).slice(0, 5);
+                
+                let matchedIds = scoredGroups.map(g => g.id);
+                let message = matchedIds.length > 0 ? `I found ${matchedIds.length} matching communities for you.` : `No direct matches, but here are top groups:`;
+                if (matchedIds.length === 0) matchedIds = STATE.data.slice(0, 3).map(g=>g.id);
+
+                this.renderResults(message, matchedIds);
+            },
+            renderResults(message, ids) {
+                this.loading.classList.add('hidden');
+                const resultsBlock = document.createElement('div');
+                resultsBlock.id = 'ai-results-block';
+                resultsBlock.className = 'flex flex-col gap-4 p-4 md:p-6 overflow-y-auto flex-1 animate-fade-in';
+                
+                let cardsHtml = '';
+                ids.forEach(id => {
+                    const g = ACTION_ENGINE.getGroup(id);
+                    if (g) {
+                        cardsHtml += `
+                            <div class="p-3 bg-surface border border-border rounded-xl flex items-center justify-between gap-3">
+                                <div>
+                                    <h4 class="font-bold text-sm text-text">${UTILS.escapeHTML(g.name)}</h4>
+                                    <span class="text-xs text-text-muted capitalize"><i class="fa-brands ${ICON_ENGINE.getPlatformIcon(g.platform)}"></i> ${g.platform} &bull; ${g.category}</span>
+                                </div>
+                                <button onclick="ACTION_ENGINE.join('${g.url}')" class="bg-primary text-bg font-semibold px-4 py-1.5 rounded-lg text-xs">Join</button>
+                            </div>
+                        `;
+                    }
+                });
+
+                resultsBlock.innerHTML = `
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 rounded-full bg-ai text-white flex shrink-0 items-center justify-center text-sm shadow-sm mt-1"><i class="fa-solid fa-robot"></i></div>
+                        <div class="bg-surface-2 p-3 md:p-4 rounded-2xl text-sm text-text border border-border">${UTILS.escapeHTML(message)}</div>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">${cardsHtml}</div>
+                    <div class="flex justify-end gap-3 mt-4 pt-4 border-t border-border">
+                        <button class="px-4 py-2 rounded-xl text-sm font-medium bg-surface-2 border border-border" onclick="AI_ENGINE.resetView()">Ask Another</button>
+                    </div>
+                `;
+                this.modal.querySelector('.modal-content').appendChild(resultsBlock);
+            },
+            resetView() {
+                const resultsBlock = document.getElementById('ai-results-block');
+                if (resultsBlock) resultsBlock.remove();
+                this.input.value = '';
+                this.body.classList.remove('hidden');
+                document.getElementById('ai-modal-footer').classList.remove('hidden');
+                this.input.focus();
+            }
+        };
+
+        const UI_ENGINE = {
+            init() {
+                this.initTheme();
+                this.initViewToggles();
+                this.initMobileSearch();
+                this.initMobileFilters();
+            },
+            initTheme() {
+                const applyTheme = (theme) => {
+                    if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                };
+                applyTheme(STATE.theme);
+                const toggleBtn = () => {
+                    const isDark = document.documentElement.classList.contains('dark');
+                    const newTheme = isDark ? 'light' : 'dark';
+                    STATE.theme = newTheme;
+                    localStorage.setItem('groups_store_theme', newTheme);
+                    applyTheme(newTheme);
+                    const iconClass = newTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+                    document.getElementById('theme-toggle').innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+                    document.getElementById('mobile-theme-toggle').innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+                };
+                document.getElementById('theme-toggle').addEventListener('click', toggleBtn);
+                document.getElementById('mobile-theme-toggle').addEventListener('click', toggleBtn);
+            },
+            initViewToggles() {
+                document.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active', 'text-text', 'bg-surface', 'shadow-sm'));
+                        e.currentTarget.classList.add('active', 'text-text', 'bg-surface', 'shadow-sm');
+                        STATE.viewMode = e.currentTarget.dataset.view;
+                        CARD_ENGINE.renderCards();
+                    });
+                });
+            },
+            initMobileSearch() {
+                const btn = document.getElementById('mobile-search-btn');
+                const container = document.getElementById('mobile-search-container');
+                btn.addEventListener('click', () => container.classList.toggle('hidden'));
+            },
+            initMobileFilters() {
+                const btn = document.getElementById('mobile-filter-btn');
+                const panel = document.getElementById('filter-panel');
+                btn.addEventListener('click', () => {
+                    panel.classList.toggle('hidden');
+                    panel.classList.toggle('flex');
+                });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            DATA_ENGINE.init();
+            FILTER_ENGINE.init();
+            UI_ENGINE.init();
+        });
+    </script>
+</body>
+</html>
