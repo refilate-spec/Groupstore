@@ -1002,152 +1002,32 @@
                     `;
                 }
 
-                if (style === 'horizontal') {
+                   if (style === 'horizontal') {
     return `
-        <div class="group relative shrink-0 w-[290px] sm:w-[340px] md:w-[380px]
-                    min-h-[210px]
-                    rounded-2xl
-                    border border-border
-                    bg-surface
-                    overflow-hidden
-                    shadow-sm
-                    hover:shadow-md
-                    transition-all duration-300
-                    scroll-snap-align:start">
-
+        <div class="relative bg-surface rounded-2xl border border-border p-4 md:p-5 flex flex-col sm:flex-row gap-4 h-full overflow-hidden">
             ${cornerBadge}
-
-            <div class="p-4 md:p-5 flex flex-col sm:flex-row gap-4 h-full relative z-10">
-
-                <!-- Avatar + Platform -->
-                <div class="shrink-0 flex sm:flex-col items-center sm:items-start
-                            justify-between gap-3
-                            w-full sm:w-16">
-
-                    <div class="w-12 h-12 sm:w-16 sm:h-16
-                                rounded-xl
-                                css-avatar
-                                shadow-sm
-                                border border-border
-                                shrink-0
-                                overflow-hidden
-                                flex items-center justify-center">
-
-                        <span class="text-lg sm:text-xl font-bold text-text-muted">
-                            ${UTILS.generateInitials(group.name)}
-                        </span>
-
-                    </div>
-
-                    <div class="flex items-center gap-1.5
-                                text-[10px] font-semibold
-                                ${platformColorClass}
-                                px-2 py-1
-                                rounded-md
-                                sm:w-full
-                                sm:justify-center
-                                whitespace-nowrap">
-
-                        <i class="fa-brands ${platformIcon}"></i>
-
-                    </div>
-
+            <div class="shrink-0 flex sm:flex-col items-center sm:items-start justify-between gap-3 w-full sm:w-16">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl css-avatar shadow-sm border border-border shrink-0">
+                    <span class="text-lg sm:text-xl font-bold text-text-muted">${UTILS.generateInitials(group.name)}</span>
                 </div>
-
-
-                <!-- Content -->
-                <div class="flex flex-col flex-1 min-w-0">
-
-                    <!-- Title -->
-                    <div class="flex items-start justify-between gap-2">
-
-                        <h3 class="font-bold text-base md:text-lg
-                                   text-text
-                                   leading-tight
-                                   flex items-center gap-1.5
-                                   min-w-0">
-
-                            <span class="truncate">
-                                ${UTILS.escapeHTML(group.name)}
-                            </span>
-
-                            ${verifiedTick}
-
-                        </h3>
-
-                        ${innerBadge}
-
-                    </div>
-
-
-                    <!-- Description -->
-                    <p class="text-sm text-text-secondary
-                              line-clamp-2
-                              mt-1.5
-                              leading-relaxed">
-
-                        ${UTILS.escapeHTML(group.description)}
-
-                    </p>
-
-
-                    <!-- Tags -->
-                    <div class="flex flex-wrap gap-1.5 mt-3">
-                        ${tagsHTML}
-                    </div>
-
-
-                    <!-- Actions -->
-                    <div class="mt-auto pt-4
-                                flex items-center gap-2
-                                sm:max-w-xs">
-
-                        <button
-                            onclick="ACTION_ENGINE.join('${group.url}')"
-                            class="flex-1
-                                   bg-primary
-                                   hover:bg-primary-hover
-                                   text-bg
-                                   font-semibold
-                                   py-2
-                                   px-4
-                                   rounded-xl
-                                   transition-all
-                                   duration-200
-                                   text-sm
-                                   text-center
-                                   active:scale-[0.98]">
-
-                            Join
-
-                        </button>
-
-                        <button
-                            onclick="ACTION_ENGINE.share('${group.id}')"
-                            class="w-9 h-9
-                                   shrink-0
-                                   bg-surface-2
-                                   hover:bg-surface-3
-                                   text-text-secondary
-                                   rounded-xl
-                                   flex items-center justify-center
-                                   transition-all
-                                   duration-200
-                                   active:scale-95">
-
-                            <i class="fa-solid fa-share-nodes"></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
+                <div class="flex items-center gap-1.5 text-[10px] font-semibold ${platformColorClass} px-2 py-1 rounded-md sm:w-full sm:justify-center"><i class="fa-brands ${platformIcon}"></i></div>
             </div>
-
+            <div class="flex flex-col flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-2">
+                    <h3 class="font-bold text-base md:text-lg text-text leading-tight flex items-center gap-1.5 truncate">${UTILS.escapeHTML(group.name)} ${verifiedTick}</h3>
+                    ${innerBadge}
+                </div>
+                <p class="text-sm text-text-secondary line-clamp-2 mt-1">${UTILS.escapeHTML(group.description)}</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">${tagsHTML}</div>
+                <div class="mt-auto pt-4 flex items-center gap-2 sm:max-w-xs">
+                    <button onclick="ACTION_ENGINE.join('${group.url}')" class="flex-1 bg-primary hover:bg-primary-hover text-bg font-semibold py-2 px-4 rounded-xl transition-colors text-sm text-center">Join</button>
+                    <button onclick="ACTION_ENGINE.share('${group.id}')" class="w-9 h-9 shrink-0 bg-surface-2 hover:bg-surface-3 text-text-secondary rounded-xl flex items-center justify-center transition-colors"><i class="fa-solid fa-share-nodes"></i></button>
+                </div>
+            </div>
         </div>
     `;
 }
+                              
 
                 if (style === 'compact') {
                     return `
