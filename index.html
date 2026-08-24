@@ -1238,6 +1238,42 @@
             }
         };
 
+        initMobileSearch() {
+    const btn = document.getElementById('mobile-search-btn');
+    const container = document.getElementById('mobile-search-container');
+
+    if (!btn || !container) return;
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        container.classList.toggle('hidden');
+    });
+
+    container.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (
+            !container.classList.contains('hidden') &&
+            !container.contains(e.target) &&
+            !btn.contains(e.target)
+        ) {
+            container.classList.add('hidden');
+        }
+    });
+
+    document.addEventListener('touchstart', (e) => {
+        if (
+            !container.classList.contains('hidden') &&
+            !container.contains(e.target) &&
+            !btn.contains(e.target)
+        ) {
+            container.classList.add('hidden');
+        }
+    }, { passive: true });
+}
+
         document.addEventListener('DOMContentLoaded', () => {
             DATA_ENGINE.init();
             FILTER_ENGINE.init();
